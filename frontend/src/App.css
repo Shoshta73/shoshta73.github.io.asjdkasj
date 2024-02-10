@@ -1,0 +1,9 @@
+.app-container {
+  display: flex;
+}
+
+.app {
+  min-height: 100vh;
+  min-width: 100%;
+  flex-grow: 1;
+}
