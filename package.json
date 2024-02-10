@@ -1,0 +1,37 @@
+{
+  "name": "website",
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@8.15.1",
+  "private": true,
+  "engines": {
+    "node": "20.11.0"
+  },
+  "scripts": {
+    "format": "prettier --write **.{js,cjs,mjs,jsx,ts,tsx,json}",
+    "format:check": "prettier --check **.{js,cjs,mjs,jsx,ts,tsx,json}",
+    "lint": "eslint . && stylelint ./**/*.css --mw && prettier --check **.{js,cjs,mjs,jsx,ts,tsx,json}",
+    "lint:fix": "eslint . --fix && stylelint ./**/*.css --fix && prettier --write **.{js,cjs,mjs,jsx,ts,tsx,json}",
+    "lint:check": "eslint .",
+    "lint-style:check": "stylelint ./**/*.css --mw 0",
+    "lint-style:fix": "stylelint ./**/*.css --fix",
+    "prepare": "husky",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "@vitest/ui": "^1.2.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "husky": "^9.0.10",
+    "jsdom": "^24.0.0",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "vitest": "^1.2.2"
+  }
+}
