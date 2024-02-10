@@ -1,0 +1,26 @@
+name: Lint Check
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - run: |
+          pnpm install -r
+          pnpm run lint:check
+          pnpm run lint-style:check
