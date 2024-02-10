@@ -14,7 +14,7 @@
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@supabase/supabase-js": "^2.39.3",
     "date-fns": "^3.3.1",
-    "hono": "^3.12.11",
+    "hono": "^4.0.0",
     "semver": "^7.6.0"
   },
   "devDependencies": {
