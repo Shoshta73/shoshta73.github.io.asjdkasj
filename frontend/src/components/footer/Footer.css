@@ -13,6 +13,11 @@
     color: var(--fg);
   }
 
+  & a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+
   .social-media {
     & svg {
       color: var(--fg);
