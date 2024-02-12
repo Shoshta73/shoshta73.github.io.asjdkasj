@@ -53,7 +53,7 @@ jobs:
             fi
             pnpm version patch
             git push --follow-tags origin main
-            git push origin main:production
+            git push --force origin main:production
           elif [[ "$TYPE" =~ ^(feature|feat|change) ]]; then
             echo "Minor Bump Needed."
             if [[ "$SCOPE" == "api" ]]; then
@@ -73,7 +73,7 @@ jobs:
             fi
             pnpm version minor
             git push --follow-tags origin main
-            git push origin main:production
+            git push --force origin main:production
           elif [[ "$TYPE" =~ ^(breaking|major|release|rel) ]]; then
             echo "Major Bump Needed."
             if [[ "$SCOPE" == "api" ]]; then
@@ -93,7 +93,7 @@ jobs:
             fi
             pnpm version major
             git push --follow-tags origin main
-            git push origin main:production
+            git push --force origin main:production
           elif [[ "$TYPE" =~ ^(docs) ]]; then
             echo "No Version Bump Needed."
             cd docs
@@ -115,7 +115,7 @@ jobs:
             fi
             cd ..
             git push --follow-tags origin main
-            git push origin main:production --force
+            git push --force origin main:production
           else
             echo "No Version Bump Needed."
           fi
