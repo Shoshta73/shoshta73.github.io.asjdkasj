@@ -37,8 +37,8 @@ describe("Navbar", () => {
         <Navbar />
       </Router>
     );
-    await screen.findByTestId("links");
-    expect(screen.queryByTestId("links")).not.toBeInTheDocument();
+    const links = screen.queryByTestId("links");
+    expect(links).not.toBeInTheDocument();
   });
 
   it("should show links when screen width is greater than  900 pixels", async () => {

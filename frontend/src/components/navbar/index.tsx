@@ -35,7 +35,11 @@ export default function Navbar() {
           </>
         )}
         <div className="navbar-buttons" id="navbar-buttons">
-          <button className="navbar-menu-button" onClick={() => setExpanded(!expanded)} role="button" name="menu">
+          <button
+            className="navbar-menu-button"
+            onClick={() => setExpanded(!expanded)}
+            aria-label="menu"
+            data-testid="menu-button">
             <MenuIcon size={50} />
           </button>
         </div>

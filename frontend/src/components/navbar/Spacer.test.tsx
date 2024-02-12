@@ -35,7 +35,7 @@ describe("Spacer", () => {
 
     // Get the spacer element and assert its width
     const spacer = screen.getByTestId("spacer");
-    expect(spacer).toHaveStyle(`width:  100px`); // Expect the width to be  100px
+    expect(spacer).toHaveStyle(`width: 100px`); // Expect the width to be  100px
 
     // Clean up after the test
     document.body.removeChild(mockElement);
@@ -53,14 +53,14 @@ describe("Spacer", () => {
 
     // Get the spacer element and assert its initial width
     const spacer = screen.getByTestId("spacer");
-    expect(spacer).toHaveStyle(`width:   200px`); // Expect the initial width to be   200px
+    expect(spacer).toHaveStyle(`width: 200px`); // Expect the initial width to be   200px
 
     // Update the width of the mock element and trigger a window resize event
     mockElement.style.width = "300px"; // Simulate changing the clientWidth
     resizeWindow(300); // Trigger the resize event
 
     // Assert that the spacer element's width has updated
-    expect(spacer).toHaveStyle(`width:   300px`); // Expect the updated width to be   300px
+    expect(spacer).toHaveStyle(`width: 300px`); // Expect the updated width to be   300px
 
     // Clean up after the test
     document.body.removeChild(mockElement);
@@ -88,9 +88,6 @@ describe("Spacer", () => {
 
     spacer = screen.getByTestId("spacer");
     expect(spacer).toHaveStyle("width:   0px"); // After re-rendering, the width should still be  0px
-
-    // Clean up after the test
-    document.body.removeChild(mockElement);
   });
 
   it("should not throw any errors", () => {
