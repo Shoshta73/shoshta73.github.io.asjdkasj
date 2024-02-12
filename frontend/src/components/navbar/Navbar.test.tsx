@@ -7,7 +7,7 @@ import Navbar from ".";
 
 describe("Navbar", () => {
   // Helper function to resize the window
-  const resizeWindow = (width) => {
+  const resizeWindow = (width: number) => {
     act(() => {
       window.innerWidth = width || document.documentElement.clientWidth;
       window.dispatchEvent(new Event("resize"));

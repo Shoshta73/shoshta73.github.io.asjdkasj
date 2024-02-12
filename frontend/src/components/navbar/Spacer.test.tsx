@@ -6,7 +6,7 @@ import Spacer from "./Spacer";
 
 describe("Spacer", () => {
   // Helper function to resize the window
-  const resizeWindow = (width) => {
+  const resizeWindow = (width: number) => {
     act(() => {
       Object.defineProperty(window, "innerWidth", { writable: true, configurable: true, value: width });
       window.dispatchEvent(new Event("resize"));
@@ -84,7 +84,7 @@ describe("Spacer", () => {
     expect(spacer).toHaveStyle("width:   0px"); // Initially, the width should be  0px
 
     // Remove the offsetWidth attribute from the mock element
-    delete mockElement.offsetWidth;
+    document.body.removeChild(mockElement);
 
     spacer = screen.getByTestId("spacer");
     expect(spacer).toHaveStyle("width:   0px"); // After re-rendering, the width should still be  0px
