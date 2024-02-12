@@ -9,7 +9,7 @@ module.exports = {
   singleQuote: false,
   trailingComma: "none",
   useTabs: false,
-  importOrder: ["<THIRD_PARTY_MODULES>", "^[./]", "^[./*.css]"],
+  importOrder: ["<THIRD_PARTY_MODULES>", "^@Pages*", "^@Components*", "^[./]", "^[./*.css]"],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   plugins: [require.resolve("@trivago/prettier-plugin-sort-imports")]

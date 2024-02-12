@@ -23,6 +23,8 @@
     /* Aliases */
     "baseUrl": ".",
     "paths": {
+      "@Components": ["src/components"],
+      "@Components/*": ["src/components/*"],
       "@Pages": ["src/pages"],
       "@Pages/*": ["src/pages/*"]
     }
