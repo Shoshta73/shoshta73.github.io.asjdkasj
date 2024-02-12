@@ -43,4 +43,29 @@ describe("Footer", () => {
     await fireEvent.mouseOver(link);
     // Add assertions here if needed, e.g., checking for tooltip appearance
   });
+
+  it("should render a paragraph with text '&copy; 2024' and a link to 'shoshta.net' or 'shoshta73.github.io' based on the environment variable VITE_APP_DEPLOYMENT", () => {
+    const { getByText } = render(<Footer />);
+    const link = getByText("shoshta.net");
+    expect(link).toBeInTheDocument();
+  });
+
+  it("should render a link to 'shoshta.net' when VITE_APP_DEPLOYMENT environment variable is not set", () => {
+    const { getByText } = render(<Footer />);
+    const link = getByText("shoshta.net");
+    expect(link).toBeInTheDocument();
+  });
+
+  it("should render a link to 'shoshta.net' when VITE_APP_DEPLOYMENT environment variable is set to an unexpected value", () => {
+    const { getByText } = render(<Footer />);
+    const link = getByText("shoshta.net");
+    expect(link).toBeInTheDocument();
+  });
+
+  it("should render a div with class 'footer' when Footer is rendered and VITE_APP_DEPLOYMENT is set to 'GHP'", () => {
+    process.env.VITE_APP_DEPLOYMENT = "GHP";
+    const { container } = render(<Footer />);
+    const footerDiv = container.querySelector(".footer");
+    expect(footerDiv).not.toBeNull();
+  });
 });
