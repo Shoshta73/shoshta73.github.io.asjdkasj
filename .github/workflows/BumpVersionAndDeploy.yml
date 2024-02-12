@@ -38,14 +38,19 @@ jobs:
             echo "Patch Bump Needed."
             if [[ "$SCOPE" == "api" ]]; then
               cd api
+              pnpm version patch --no-git-tag-version
+              git add .
+              MSG=$(node -p 'require("./package.json").version')
+              git commit -m"$SCOPE v$MSG"
+              cd ..
             elif [[ "$SCOPE" == "frontend" ]]; then
               cd frontend
+              pnpm version patch --no-git-tag-version
+              git add .
+              MSG=$(node -p 'require("./package.json").version')
+              git commit -m"$SCOPE v$MSG"
+              cd ..
             fi
-            pnpm version patch --no-git-tag-version
-            git add .
-            MSG=$(node -p 'require("./package.json").version')
-            git commit -m"$SCOPE v$MSG"
-            cd ..
             pnpm version patch
             git push --follow-tags origin main
             git push origin main:production
@@ -53,29 +58,39 @@ jobs:
             echo "Minor Bump Needed."
             if [[ "$SCOPE" == "api" ]]; then
               cd api
+              pnpm version minor --no-git-tag-version
+              git add .
+              MSG=$(node -p 'require("./package.json").version')
+              git commit -m"$SCOPE v$MSG"
+              cd ..
             elif [[ "$SCOPE" == "frontend" ]]; then
               cd frontend
+              pnpm version minor --no-git-tag-version
+              git add .
+              MSG=$(node -p 'require("./package.json").version')
+              git commit -m"$SCOPE v$MSG"
+              cd ..
             fi
-            pnpm version minor --no-git-tag-version
-            git add .
-            MSG=$(node -p 'require("./package.json").version')
-            git commit -m"$SCOPE v$MSG"
-            cd ..
             pnpm version minor
             git push --follow-tags origin main
             git push origin main:production
           elif [[ "$TYPE" =~ ^(breaking|major|release|rel) ]]; then
             echo "Major Bump Needed."
-            git commit -m"$SCOPE v$MSG"
-            pnpm version major --no-git-tag-version
-            git add .
-            MSG=$(node -p 'require("./package.json").version')
             if [[ "$SCOPE" == "api" ]]; then
-              git commit -m"api v$MSG"
+              cd api
+              pnpm version major --no-git-tag-version
+              git add .
+              MSG=$(node -p 'require("./package.json").version')
+              git commit -m"$SCOPE v$MSG"
+              cd ..
             elif [[ "$SCOPE" == "frontend" ]]; then
-              git commit -m"frontend v$MSG"
+              cd frontend
+              pnpm version major --no-git-tag-version
+              git add .
+              MSG=$(node -p 'require("./package.json").version')
+              git commit -m"$SCOPE v$MSG"
+              cd ..
             fi
-            cd ..
             pnpm version major
             git push --follow-tags origin main
             git push origin main:production
