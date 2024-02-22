@@ -5,12 +5,13 @@ const Spacer = () => {
 
   useEffect(() => {
     const navbarButtonsElement = document.getElementById("navbar-buttons");
-    if (navbarButtonsElement) {
+    if (navbarButtonsElement !== null) {
       setSpacerWidth(navbarButtonsElement.offsetWidth);
       return;
+    } else {
+      setSpacerWidth(0);
+      return;
     }
-    setSpacerWidth(0);
-    return;
   }, []);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const Spacer = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <div style={{ width: spacerWidth }} id="spacer" data-testid="spacer" />;
+  return <div style={{ width: spacerWidth }} id="navbar-spacer" data-testid="navbar-spacer" />;
 };
 
 export default Spacer;

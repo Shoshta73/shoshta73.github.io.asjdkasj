@@ -1,0 +1,32 @@
+[
+  {
+    "name": "test1",
+    "description": "test1 description",
+    "id": 1,
+    "version": "0.0.0",
+    "details": "test1 details",
+    "previewable": true,
+    "planned": false,
+    "mailingList": true
+  },
+  {
+    "name": "test2",
+    "description": "test2 description",
+    "id": 2,
+    "version": "1.0.0",
+    "details": "test2 details",
+    "previewable": false,
+    "planned": false,
+    "mailingList": false
+  },
+  {
+    "name": "test3",
+    "description": "test3 description",
+    "id": 3,
+    "version": "2.0.0",
+    "details": "test3 details",
+    "previewable": false,
+    "planned": true,
+    "mailingList": false
+  }
+]

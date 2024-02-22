@@ -24,7 +24,7 @@ export default function Navbar() {
   }, [location]);
 
   return (
-    <div className="navbar" role="navigation">
+    <div className="navbar" id="navbar" role="navigation">
       <div className="navbar-container">
         {width <= 900 ? (
           <></>

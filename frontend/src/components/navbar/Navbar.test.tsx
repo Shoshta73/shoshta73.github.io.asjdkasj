@@ -27,7 +27,8 @@ describe("Navbar", () => {
     );
     expect(screen.getByRole("navigation")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "menu" })).toBeInTheDocument();
-    expect(screen.getByTestId("link-box")).toBeInTheDocument();
+    expect(screen.getByTestId("link-box-home")).toBeInTheDocument();
+    expect(screen.getByTestId("link-box-projects")).toBeInTheDocument();
   });
 
   it("should hide links when screen width is less than or equal to  900 pixels", async () => {
@@ -58,8 +59,8 @@ describe("Navbar", () => {
         <Navbar />
       </Router>
     );
-    expect(screen.getByTestId("spacer")).toBeInTheDocument();
-    expect(screen.getByTestId("spacer").style.width).toBe("0px");
+    expect(screen.getByTestId("navbar-spacer")).toBeInTheDocument();
+    expect(screen.getByTestId("navbar-spacer").style.width).toBe("0px");
   });
 
   it("should handle case when clientWidth is null in Spacer component", () => {
@@ -68,8 +69,8 @@ describe("Navbar", () => {
         <Navbar />
       </Router>
     );
-    expect(screen.getByTestId("spacer")).toBeInTheDocument();
-    expect(screen.getByTestId("spacer").style.width).toBe("0px");
+    expect(screen.getByTestId("navbar-spacer")).toBeInTheDocument();
+    expect(screen.getByTestId("navbar-spacer").style.width).toBe("0px");
   });
 
   it("should handle case when location is null in Links component", () => {
@@ -78,7 +79,8 @@ describe("Navbar", () => {
         <Navbar />
       </Router>
     );
-    expect(screen.getByTestId("link-box")).toBeInTheDocument();
+    expect(screen.getByTestId("link-box-home")).toBeInTheDocument();
+    expect(screen.getByTestId("link-box-projects")).toBeInTheDocument();
     expect(screen.queryByTestId("current-link")).not.toBeInTheDocument();
   });
 });

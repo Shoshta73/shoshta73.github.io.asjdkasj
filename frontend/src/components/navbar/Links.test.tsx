@@ -31,20 +31,34 @@ describe("Links", () => {
     expect(linksDiv).toHaveClass("links");
   });
 
-  it('should render a div with class name "link-box" and a Link component with "Home" text', () => {
+  it('should render a divs with class name "link-box" and a Link component with "Home" text', () => {
     renderWithRouter();
-    const linkBox = screen.getByTestId("link-box");
-    expect(linkBox).toBeInTheDocument();
-    expect(linkBox).toHaveClass("link-box");
+    const linkBoxHome = screen.getByTestId("link-box-home");
+    const linkBoxProjects = screen.getByTestId("link-box-projects");
+    expect(linkBoxHome).toBeInTheDocument();
+    expect(linkBoxProjects).toBeInTheDocument();
+    expect(linkBoxHome).toHaveClass("link-box");
+    expect(linkBoxProjects).toHaveClass("link-box");
 
     const homeLink = screen.getByText(/home/i);
+    const projectsLink = screen.getByText(/projects/i);
     expect(homeLink).toBeInTheDocument();
+    expect(projectsLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute("href", "/");
+    expect(projectsLink).toHaveAttribute("href", "/projects");
   });
 
   it('should add "current-link" class to "link-box" div when location.pathname is "/"', () => {
     renderWithRouter();
-    const currentLinkBox = screen.getByTestId("link-box");
+    const currentLinkBox = screen.getByTestId("link-box-home");
+    expect(currentLinkBox).toHaveClass("current-link");
+  });
+
+  it('should add "current-link" class to "link-box" div when location.pathname is "/projects"', () => {
+    location.pathname = "/projects";
+
+    renderWithRouter();
+    const currentLinkBox = screen.getByTestId("link-box-projects");
     expect(currentLinkBox).toHaveClass("current-link");
   });
 
@@ -52,7 +66,9 @@ describe("Links", () => {
     // Update the location object to simulate a different path
     location.pathname = "/other";
     renderWithRouter();
-    const nonCurrentLinkBox = screen.getByTestId("link-box");
-    expect(nonCurrentLinkBox).not.toHaveClass("current-link");
+    const nonCurrentLinkBoxHome = screen.getByTestId("link-box-home");
+    const nonCurrentLinkBoxProjects = screen.getByTestId("link-box-projects");
+    expect(nonCurrentLinkBoxHome).not.toHaveClass("current-link");
+    expect(nonCurrentLinkBoxProjects).not.toHaveClass("current-link");
   });
 });
